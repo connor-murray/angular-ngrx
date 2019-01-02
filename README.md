@@ -18,21 +18,22 @@ The application is visible at port 4200: [http://localhost:4200](http://localhos
 ## Dev Tools
 Install redux dev tools from chrome store
 
-##Store 
+## Store 
 centralized application state singleton service that acts as in memory database
 store is immutable
 cannot modify sate from components etc but must dispatch an action that creates a new version of the app state via reducer
 
-##Reducer
+## Reducer
 takes current state & action produces a new state based off action
   
-##Selectors
+## Selectors
  selectors are memorized functions - if called with same input args they do not calculate output again they just return result from memory without executing selector again
 return requested data from state
-##Effects
+
+## Effects
 can produce effects in response to actions i.e. save to session storage - this is exactly what ngrx effects is for
 
-##Actions
+## Actions
 Tell the reducer what part of the state needs updated and trigger the update passing the required args
 
 ## Libraries
@@ -82,16 +83,16 @@ Use on push change detection in container/smart components.
 Use of immutability with store architecture means component cannot change state.
 Use of observables and async pipe in html mean change detection is faster and not continually monitoring everything.
 
-##Improvements
+## Improvements
 - facade pattern to wrap NGRX
 
-##when to use the store
+## when to use the store
 Stores and applications with concurrent updates
 So this means that Redux helps us cope with situations where we are passing inputs to components up the component tree using @Input(), but those inputs feel extraneous, as not part of the application at that point.
 For example, we are passing something 5 or 10 levels up the component tree. The leaves of the tree know what to do with it, but for all the components in the middle the input feels extraneous and makes that component less reusable and more tied to the application. But that is just one example.
 pass data deep down the tree, and react to events several levels up the component tree
 Another issue is, we have sibling components in the tree that are interdependent, and that represent different view for the same data on the screen, like a list of folders with unread messages, and a total unread messages counter on the page header.
 
-##Normalization
+## Normalization
 As APIs usually send back data in nested form that data needs to be transformed into a normalized shape before it can be included in the state tree.
 The `Normalizr` library is the recommended way to achieve this.
